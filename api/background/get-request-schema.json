@@ -16,7 +16,7 @@
       "description": "The `height` parameter restricts the size of the canvas in vertical",
       "type": "number",
       "minimum": 1,
-      "maximum": 100,
+      "maximum": 10000,
       "default": 20
     },
     "minItems": {
