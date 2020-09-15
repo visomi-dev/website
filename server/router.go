@@ -5,11 +5,12 @@ import (
 )
 
 func router(e *echo.Echo) {
+	// Background validator middleware
+	bckgvm := Validator("../api/background/get-request-schema.json", "query")
+
 	e.GET("/api", func(c echo.Context) error {
-		return c.File("../../api/api.html")
+		return c.File("../api/api.html")
 	})
 
-	bckgm := Validator("../api/background/get-request-schema.json", "query")
-
-	e.GET("/api/background", Background, bckgm)
+	e.GET("/api/background", Background, bckgvm)
 }

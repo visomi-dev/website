@@ -37,6 +37,16 @@ func Validator(schemaPath string, validationType string) echo.MiddlewareFunc {
 
 			if validationType == "query" {
 				p := c.QueryString()
+
+				if p == "" {
+					return c.JSON(http.StatusBadRequest, &ValidatorResponse{
+						BaseResponse: &BaseResponse{
+							Success: false,
+							Message: "Bad request, need query string params",
+						},
+					})
+				}
+
 				b, _ := qson.ToJSON(p)
 				pr = bytes.NewReader(b)
 			}
