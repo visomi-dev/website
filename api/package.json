@@ -1,0 +1,14 @@
+{
+  "name": "vitea-docs",
+  "version": "0.0.2",
+  "description": "vitea api documentation",
+  "main": "index.js",
+  "scripts": {
+    "generate": "raml2html api.raml > api.html"
+  },
+  "author": "Michael Villalba Sotelo",
+  "license": "MIT",
+  "dependencies": {
+    "raml2html": "^7.6.0"
+  }
+}

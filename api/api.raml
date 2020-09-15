@@ -1,0 +1,34 @@
+#%RAML 1.0
+---
+title: visomi website utils server
+baseUri: https://visomi.dev/api
+
+/background:
+  displayName: Space SVG background
+  get:
+    description: Get the SVG File
+    queryParameters:
+      width:
+        type: number
+        description: The `width` parameter restricts the size of the canvas in horizontal
+      height:
+        type: number
+        description: The `height` parameter restricts the size of the canvas in vertical
+      minItems:
+        type: number
+        description: The `minItems` parameter restricts the minimum number of circles in canvas
+      maxItems:
+        type: number
+        description: The `maxItems` parameter restricts the maximum number of circles in canvas
+      minItemSize:
+        type: number
+        description: The `minItemSize` parameter restricts the minimum radius size of the circles
+      maxItemSize:
+        type: number
+        description: The `maxItemSize` parameter restricts the maxium radius size of the circles
+    responses:
+      200:
+        body:
+          image/svg+xml:
+            example: !include get-response-200-example.svg
+            type: !include get-response-200-schema.xsd

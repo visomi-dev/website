@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get background svg",
+  "description": "Get SVG image with stars (query params)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "width": {
+      "description": "The `width` parameter restricts the size of the canvas in horizontal",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10000,
+      "default": 20
+    },
+    "height": {
+      "description": "The `height` parameter restricts the size of the canvas in vertical",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 20
+    },
+    "minItems": {
+      "description": "The `minItems` parameter restricts the minimum number of circles in canvas",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 100000,
+      "default": 20
+    },
+    "maxItems": {
+      "description": "The `maxItems` parameter restricts the maximum number of circles in canvas",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 100000,
+      "default": 20
+    },
+    "minItemSize": {
+      "description": "The `minItemSize` parameter restricts the minimum radius size of the circles",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 20
+    },
+    "maxItemSize": {
+      "description": "The `maxItemSize` parameter restricts the maxium radius size of the circles",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 20
+    }
+  }
+}
