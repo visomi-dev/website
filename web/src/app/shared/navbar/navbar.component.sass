@@ -1,0 +1,58 @@
+.the-navbar.navbar
+  .navbar-brand
+    background: var(--body-background)
+
+  .navbar-item-brand
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    img
+      height: 50%
+
+  .navbar-burger
+    height: var(--navbar-height)
+    width: var(--navbar-height)
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    span
+      position: relative
+      height: .5rem
+      width: 2.5rem
+      left: auto!important
+      top: auto!important
+      margin-bottom: .5rem
+      color: white
+
+  .navbar-item
+    position: relative
+    background: var(--navbar-item-background)
+
+  .navbar-item:not(.brand).is-active::before
+    content: ""
+
+    position: absolute
+    bottom: 25%
+    left: 0
+
+    width: 100%
+    height: .15rem
+
+    background: var(--navbar-item-active-color)
+
+@media screen and (max-width: 768px)
+  .the-navbar.navbar
+    .navbar-item-brand
+      margin-left: 1rem
+
+    .navbar-burger
+      display: flex
+
+    .navbar-item:not(.brand).is-active::before
+      display: none
+
+@media screen and (min-width: 1024px)
+  .the-navbar.navbar
+    padding: 0 2rem

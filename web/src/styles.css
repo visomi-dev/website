@@ -1,0 +1,22 @@
+:root {
+  --midnight-express: #010018;
+
+  --body-background: var(--midnight-express);
+  --body-overflow-y: auto!important;
+  --body-margin: 0;
+  --body-min-width: 100vw;
+
+  --navbar-background-color: none;
+  --navbar-height: 6rem;
+
+  --navbar-item-img-max-height: calc(var(--navbar-height) - 2.5rem);
+
+  --navbar-item-color: grey;
+
+  --navbar-item-background: var(--body-background);
+  --navbar-item-hover-background-color: var(--navbar-item-background);
+  --navbar-item-hover-color: white;
+
+  --navbar-item-active-color: whitesmoke;
+  --navbar-item-active-background-color: var(--navbar-item-background);
+}

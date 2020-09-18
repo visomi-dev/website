@@ -1,0 +1,72 @@
+<nav
+  class="the-navbar navbar"
+  aria-label="main navigation"
+  role="navigation"
+>
+  <div class="navbar-brand">
+    <a
+      [routerLink]="['/']"
+      class="navbar-item-brand is-flex"
+      [class.is-active]="router.url === '/'"
+    >
+      <img
+        src="../../assets/img/logo.svg"
+        width="112"
+        height="28"
+        alt="visomi.dev software architect"
+      >
+    </a>
+
+    <a
+      class="navbar-burger"
+      (click)="ui.toggleNavbar()"
+      aria-label="menu"
+      aria-expanded="false"
+      role="button"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div
+    id="navbar-menu"
+    class="navbar-menu"
+    [class.is-active]="ui.navbar"
+  >
+    <div class="navbar-end">
+      <a
+        class="navbar-item"
+        [class.is-active]="router.url === '/'"
+        [routerLink]="['/']"
+      >
+        HOME
+      </a>
+
+      <a
+        class="navbar-item"
+        [class.is-active]="router.url === '/about'"
+        [routerLink]="['/about']"
+      >
+        ABOUT
+      </a>
+
+      <a
+        class="navbar-item"
+        [class.is-active]="router.url === '/portfolio'"
+        [routerLink]="['/portfolio']"
+      >
+        PORTFOLIO
+      </a>
+
+      <a
+        class="navbar-item"
+        [class.is-active]="router.url === '/contact'"
+        [routerLink]="['/contact']"
+      >
+        CONTACT
+      </a>
+    </div>
+  </div>
+</nav>
