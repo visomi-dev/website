@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { environment } from '../environments/environment';
 
@@ -16,7 +17,12 @@ const DEFAULT_HEIGHT = 768;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
+  constructor(@Inject(PLATFORM_ID) platformId: object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  isBrowser: boolean;
   width = DEFAULT_WIDTH;
   height = DEFAULT_HEIGHT;
 
@@ -41,5 +47,25 @@ export class AppComponent {
 
   public get background(): string {
     return `url(${environment.apiUrl}/api/background?${this.query.join('&')})`;
+  }
+
+  onResize(event: Event): void {
+    this.width = (event.target as Window).innerWidth;
+    this.height = (event.target as Window).innerHeight;
+  }
+
+  ngOnInit(): void {
+    if (this.isBrowser) {
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
+
+      window.addEventListener('resize', this.onResize);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.isBrowser) {
+      window.removeEventListener('resize', this.onResize);
+    }
   }
 }

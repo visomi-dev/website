@@ -1,1 +1,16 @@
-<p>icon works!</p>
+<span
+  class="icon"
+  [class]="internalClass"
+  (click)="onClick($event)"
+>
+  <svg
+    class="app-icon"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      [attr.d]="path"
+    >
+    </path>
+  </svg>
+</span>

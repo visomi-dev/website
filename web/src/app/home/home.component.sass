@@ -1,0 +1,34 @@
+.title
+  color: white
+
+.columns
+  margin: 0
+
+.thumbnail
+  background: url("../../assets/img/visomi.jpg") 50% 50% no-repeat
+  background-size: cover
+  width: 9.5rem
+  height: 9.5rem
+  border-radius: 50%
+
+.column.is-narrow.is-flex
+  justify-content: center
+  align-items: center
+
+@media screen and (max-width: 768px)
+  .thumbnail
+    width: 6.5rem
+    height: 6.5rem
+
+.contact
+  justify-content: flex-end
+  align-items: center
+
+  a.is-flex
+    justify-content: center
+    align-items: center
+
+  a.is-flex:not(:last-child)::after
+    content: "|"
+    padding: 0 .5rem
+    color: white

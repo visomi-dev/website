@@ -1,1 +1,26 @@
-<p>home works!</p>
+<div class="columns is-multiline">
+  <div class="column is-narrow is-flex">
+    <div class="thumbnail"></div>
+  </div>
+  <div class="column">
+    <h1 class="title is-2 has-text-right">
+      Michael Villalba Sotelo
+    </h1>
+
+    <h2 class="title is-3 has-text-right">
+      Software Architect
+    </h2>
+
+    <div class="contact is-flex">
+      <a
+        *ngFor="let item of items"
+        class="is-flex phone"
+        target="_blank"
+        [href]="item.href"
+        [rel]="item.rel"
+      >
+        <app-icon [icon]="item.icon"></app-icon>
+      </a>
+    </div>
+  </div>
+</div>
