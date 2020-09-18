@@ -13,4 +13,6 @@ func router(e *echo.Echo) {
 	})
 
 	e.GET("/api/background", Background, bckgvm)
+
+	e.Static("/", "../web/dist/visomi/browser")
 }
