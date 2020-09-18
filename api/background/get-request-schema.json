@@ -46,6 +46,21 @@
       "minimum": 1,
       "maximum": 100,
       "default": 20
+    },
+    "colors": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "minLength": 0
+        }
+      ]
     }
   }
 }
