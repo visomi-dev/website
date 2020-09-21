@@ -1,29 +1,35 @@
-FROM golang:alpine as buildserver
-WORKDIR /go/src/app
+# server builder
+FROM golang:1.14-alpine AS buildserver
+WORKDIR /app
 COPY go.mod .
 COPY go.sum .
-COPY Makefile .
-COPY server .
-RUN go get -d -v ./...
-RUN make build-server
+RUN go mod download
+COPY server ./server
+RUN mkdir bin
+RUN CGO_ENABLED=0 go build -o bin/server server/*.go
 
-FROM node:alpine as buildwebapp
-WORKDIR /app/website
-COPY web .
-RUN cd web && npm i
-RUN npm run prerender
-
-FROM node:alpine as buildapidoc
-WORKDIR /app/website
-COPY api .
-RUN cd && npm i
+# api docs builder
+FROM node:dubnium-alpine AS buildapidocs
+WORKDIR /app
+COPY api ./api
+WORKDIR /app/api
+RUN npm i
 RUN npm run generate
+RUN rm -rf node_modules
 
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
-WORKDIR /app/website
-RUN mkdir -p web && mkdir -p api && mkdir -p bin
-COPY --from=buildserver /app/website/bin/server bin
-COPY --from=buildapidoc /app/website/api/api.html api
-COPY --from=buildwebapp /app/website/web/dist web
-CMD ["./bin/server"]
+# webapp builder
+FROM node:dubnium-alpine AS buildwebapp
+WORKDIR /app
+COPY web ./web
+WORKDIR /app/web
+RUN npm i
+RUN npm run prerender
+RUN rm -rf node_modules
+
+# main container
+FROM scratch
+COPY --from=buildserver /app/bin/server /app/bin/server
+COPY --from=buildapidocs /app/api /app/api
+COPY --from=buildwebapp /app/web/dist/visomi/browser /app/web/dist/visomi/browser
+WORKDIR /app/bin
+ENTRYPOINT ["./server"]

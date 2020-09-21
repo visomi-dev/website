@@ -21,5 +21,9 @@ func main() {
 
 	p := os.Getenv("PORT")
 
+	if p == "" {
+		p = "8080"
+	}
+
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", p)))
 }
