@@ -14,12 +14,13 @@
     <div class="contact is-flex">
       <a
         *ngFor="let item of items"
-        class="is-flex phone"
+        class="is-flex"
         target="_blank"
         [href]="item.href"
         [rel]="item.rel"
       >
         <app-icon [icon]="item.icon"></app-icon>
+        <div class="is-sr-only">{{ item.rel }}</div>
       </a>
     </div>
   </div>

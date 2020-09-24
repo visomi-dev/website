@@ -11,7 +11,7 @@ import * as mdi from '@mdi/js';
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.sass']
+  styleUrls: ['./icon.component.css']
 })
 export class IconComponent {
   @Input()

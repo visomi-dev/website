@@ -1,0 +1,28 @@
+.layout {
+  position: relative;
+}
+
+.layout .the-navbar {
+  width: 100%;
+  position: fixed;
+}
+
+.layout .columns {
+  height: 100%;
+}
+
+.layout .column {
+  height: 100%;
+}
+
+.layout main.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - var(--navbar-height));
+  padding-top: var(--navbar-height);
+  position: relative;
+  overflow: auto;
+}
