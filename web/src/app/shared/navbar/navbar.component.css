@@ -1,3 +1,11 @@
+:host {
+  display: flex;
+}
+
+nav.the-navbar.navbar {
+  width: 100%;
+}
+
 .the-navbar.navbar .navbar-brand {
   background: var(--body-background);
 }

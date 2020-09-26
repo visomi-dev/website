@@ -13,7 +13,10 @@
         src="../../assets/img/logo.svg"
         width="112"
         height="28"
+        i18n-alt
         alt="visomi.dev software architect"
+        i18n-title
+        title="visomi.dev software architect"
       >
     </a>
 
@@ -40,6 +43,7 @@
         class="navbar-item"
         [class.is-active]="router.url === '/'"
         [routerLink]="['/']"
+        i18n="link to home page"
       >
         HOME
       </a>
@@ -48,6 +52,7 @@
         class="navbar-item"
         [class.is-active]="router.url === '/about'"
         [routerLink]="['/about']"
+        i18n="link to about page"
       >
         ABOUT
       </a>
@@ -56,6 +61,7 @@
         class="navbar-item"
         [class.is-active]="router.url === '/portfolio'"
         [routerLink]="['/portfolio']"
+        i18n="link to portfolio page"
       >
         PORTFOLIO
       </a>
@@ -64,6 +70,7 @@
         class="navbar-item"
         [class.is-active]="router.url === '/contact'"
         [routerLink]="['/contact']"
+        i18n="link to contact page"
       >
         CONTACT
       </a>

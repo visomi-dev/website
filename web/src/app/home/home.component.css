@@ -17,7 +17,7 @@
 .column.is-narrow.is-flex {
   justify-content: center;
   align-items: center;
-};
+}
 
 .contact {
   justify-content: flex-end;

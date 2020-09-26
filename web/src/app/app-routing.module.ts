@@ -1,10 +1,26 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, UrlSegment, UrlMatchResult } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ContactComponent } from './contact/contact.component';
+
+function i18nMatcher(regex: RegExp): (url: UrlSegment[]) => UrlMatchResult | null {
+  function matcher(url: UrlSegment[]): UrlMatchResult | null {
+    const [segment] = url;
+
+    if (url.length === 1 && segment.path.match(regex)) {
+      return {
+        consumed: url,
+      };
+    }
+
+    return null;
+  }
+
+  return matcher;
+}
 
 const routes: Routes = [
   {
@@ -13,17 +29,17 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'about',
+    matcher: i18nMatcher(/^about|acerca-de$/gm),
     component: AboutComponent,
     pathMatch: 'full',
   },
   {
-    path: 'portfolio',
+    matcher: i18nMatcher(/^portfolio|portafolio$/gm),
     component: PortfolioComponent,
     pathMatch: 'full',
   },
   {
-    path: 'contact',
+    matcher: i18nMatcher(/^contact|contacto$/gm),
     component: ContactComponent,
     pathMatch: 'full',
   },
