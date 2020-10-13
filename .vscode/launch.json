@@ -8,7 +8,7 @@
       "mode": "auto",
       "program": "${workspaceFolder}/server",
       "env": {
-        "PORT": 8000
+        "PORT": 8400
       },
       "args": []
     },
