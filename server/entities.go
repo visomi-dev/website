@@ -6,7 +6,7 @@ type BaseResponse struct {
 	Message string `json:"message"`
 }
 
-// BackgroundQueryParams
+// BackgroundQueryParams data for work in background usecase
 type BackgroundQueryParams struct {
 	Width       int      `query:"width"`
 	Height      int      `query:"height"`

@@ -22,7 +22,7 @@ function getInfo(name: string): Icon {
 }
 
 fs.writeFileSync(FILE, 'package main\n\n');
-fs.appendFileSync(FILE, '// Icons\nvar Icons = map[string]string{\n');
+fs.appendFileSync(FILE, '// Icons catalog\nvar Icons = map[string]string{\n');
 
 const vars = Object.keys(mdi).reduce((accum, key) => {
   const { icon, path } = getInfo(key);
