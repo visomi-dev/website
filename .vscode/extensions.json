@@ -3,9 +3,9 @@
         "editorconfig.editorconfig",
         "golang.go",
         "angular.ng-template",
+        "msjsdiag.debugger-for-chrome",
         "dbaeumer.vscode-eslint",
         "eamodio.gitlens",
         "streetsidesoftware.code-spell-checker"
     ]
   }
-  

@@ -6,25 +6,17 @@
       "request": "launch",
       "name": "server",
       "mode": "auto",
-      "program": "${workspaceFolder}/internal/server",
+      "program": "${workspaceFolder}/server",
       "env": {
         "PORT": 8000
       },
       "args": []
     },
     {
-      "type": "node",
-      "request": "launch",
-      "name": "server: nuxt",
-      "program": "${workspaceFolder}/web/node_modules/.bin/nuxt-ts",
-      "cwd": "${workspaceFolder}/web",
-      "outputCapture": "std"
-    },
-    {
       "type": "chrome",
       "request": "launch",
       "name": "client",
-      "url": "http://localhost:4000",
+      "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}/web",
       "runtimeArgs": ["--auto-open-devtools-for-tabs"]
     }
@@ -32,7 +24,7 @@
   "compounds": [
     {
       "name": "FullStack",
-      "configurations": ["server", "server: nuxt", "client"]
+      "configurations": ["server", "client"]
     }
   ]
 }

@@ -50,8 +50,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onResize(event: Event): void {
-    console.log('resizing');
-
     this.width = (event.target as Window).innerWidth;
     this.height = (event.target as Window).innerHeight;
   }
@@ -62,7 +60,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.height = window.innerHeight;
 
       window.addEventListener('resize', this.onResize);
-      console.log(window.navigator.language);
     }
   }
 
