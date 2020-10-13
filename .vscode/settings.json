@@ -1,4 +1,5 @@
 {
+  "raml.previewTheme": "dark",
   "remote.restoreForwardedPorts": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true

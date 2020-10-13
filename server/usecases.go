@@ -8,7 +8,51 @@ import (
 
 	svg "github.com/ajstarks/svgo"
 	"github.com/labstack/echo/v4"
+	"github.com/robertkrimen/otto"
 )
+
+// Icon generate svg icon
+func Icon() func(echo.Context) error {
+	vm := otto.New()
+
+	var v, getPath otto.Value
+	script, err := vm.Compile("../icons/dist/lib.js", nil)
+	v, err = vm.Run(script)
+	v, err = vm.Get("index")
+
+	getPath, err = v.Object().Get("getPath")
+
+	if err != nil {
+		return func(c echo.Context) error {
+			return err
+		}
+	}
+
+	return func(c echo.Context) error {
+		name := c.Param("name")
+
+		path, err := getPath.Call(otto.NullValue(), name)
+
+		if err != nil {
+			return err
+		}
+
+		data := []byte(fmt.Sprintf(`
+			<svg
+				class="app-icon"
+				viewBox="0 0 24 24"
+			>
+				<path
+					fill="currentColor"
+					d="%s"
+				>
+				</path>
+			</svg>
+		`, path))
+
+		return c.Blob(http.StatusOK, "image/svg+xml", data)
+	}
+}
 
 // Background generate svg
 func Background(c echo.Context) error {

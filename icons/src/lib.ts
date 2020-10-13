@@ -1,7 +1,7 @@
 import * as mdi from '@mdi/js';
 import * as _ from 'lodash';
 
-function getPath(name: string): string {
+function getIcon(name: string): string {
   const icon = _.camelCase(['mdi', name].join('-'));
 
   const $path = _.get(mdi, icon, '');
@@ -9,4 +9,6 @@ function getPath(name: string): string {
   return $path;
 }
 
-export default getPath;
+export const getPath = getIcon;
+
+export default getIcon;

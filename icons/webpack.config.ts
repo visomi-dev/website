@@ -5,7 +5,7 @@ require('ts-node/register');
 import path from 'path';
 
 export default {
-  entry: './src/index.ts',
+  entry: './src/lib.ts',
   module: {
     rules: [
       {
@@ -19,7 +19,7 @@ export default {
     extensions: ['.ts'],
   },
   output: {
-    filename: 'index.js',
+    filename: 'lib.js',
     path: path.resolve(__dirname, 'dist'),
   },
 };
