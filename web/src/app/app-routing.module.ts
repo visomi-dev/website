@@ -1,51 +1,22 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, UrlSegment, UrlMatchResult } from '@angular/router';
-
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
-import { ContactComponent } from './contact/contact.component';
-
-function i18nMatcher(regex: RegExp): (url: UrlSegment[]) => UrlMatchResult | null {
-  function matcher(url: UrlSegment[]): UrlMatchResult | null {
-    const [segment] = url;
-
-    if (url.length === 1 && segment.path.match(regex)) {
-      return {
-        consumed: url,
-      };
-    }
-
-    return null;
-  }
-
-  return matcher;
-}
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    pathMatch: 'full',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
-    matcher: i18nMatcher(/^about|acerca-de$/gm),
-    component: AboutComponent,
-    pathMatch: 'full',
+    path: '',
+    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
   },
   {
-    matcher: i18nMatcher(/^portfolio|portafolio$/gm),
-    component: PortfolioComponent,
-    pathMatch: 'full',
+    path: '',
+    loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
   },
   {
-    matcher: i18nMatcher(/^contact|contacto$/gm),
-    component: ContactComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: '**',
-    redirectTo: '',
+    path: '',
+    loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
   },
 ];
 

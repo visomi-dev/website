@@ -31,10 +31,7 @@
               "src/styles.sass",
               "src/styles.css"
             ],
-            "scripts": [],
-            "allowedCommonJsDependencies": [
-              "lodash"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
