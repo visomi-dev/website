@@ -4,9 +4,6 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import get from 'lodash/get';
-import camelCase from 'lodash/camelCase';
-import * as mdi from '@mdi/js';
 
 @Component({
   selector: 'app-icon',
@@ -31,14 +28,6 @@ export class IconComponent {
 
   get internalType(): string {
     return this.type ? `has-text-${this.type}` : '';
-  }
-
-  public get path(): string {
-    const icon = camelCase(['mdi', this.icon].join('-'));
-
-    const $path = get(mdi, icon, '');
-
-    return $path;
   }
 
   public get internalClass(): string[] {

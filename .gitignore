@@ -1,14 +1,7 @@
-node_modules
-.nuxt
-
 .env
 main
 config.yaml
 vendor/
 __debug_bin
-
-internal/bin/*
-
 api/api.html
-
 bin/server

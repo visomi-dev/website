@@ -1,7 +1,10 @@
 {
-  "raml.previewTheme": "dark",
   "remote.restoreForwardedPorts": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
-  }
+  },
+  "eslint.workingDirectories": [
+    { "directory": "icons", "changeProcessCWD": true },
+    { "directory": "web", "changeProcessCWD": true }
+  ]
 }
