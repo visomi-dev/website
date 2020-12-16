@@ -1,33 +1,48 @@
-import fs from 'fs';
-
 import * as mdi from '@mdi/js';
-import * as _ from 'lodash';
+import kebabCase from 'lodash/kebabCase';
+import get from 'lodash/get';
+import colors from 'colors';
 
-interface Icon {
-  icon: string;
-  path: string;
+import db from './db';
+import IconModel from './models/Icon';
+import logger from './lib/logger';
+
+async function seed(): Promise<null> {
+  const icons = Object.keys(mdi).map((key) => {
+    const icon = kebabCase(key).replace('mdi-', '');
+    const path = get(mdi, key, '');
+
+    return { icon, path };
+  });
+
+  await IconModel.insertMany(icons);
+
+  return null;
 }
 
-const FILE = '../server/icons.go';
+async function main() {
+  try {
+    logger.debug(`${colors.blue('✦')}: Connecting to database...`);
 
-function getInfo(name: string): Icon {
-  const icon = _.kebabCase(name).replace('mdi-', '');
+    await db();
 
-  const path = _.get(mdi, name, '');
+    logger.debug(`${colors.green('✔️')}: Connected!`);
 
-  return {
-    icon,
-    path,
-  };
+    await IconModel.remove();
+
+    logger.debug(`${colors.blue('✦')}: Starting seed`);
+
+    await seed();
+
+    logger.debug(`${colors.blue('✔️')}: Finish!`);
+
+    process.exit(0);
+  } catch (error) {
+    logger.error(`${colors.red('❌')} [ERROR]: ${error.message}`);
+    // eslint-disable-next-line no-console
+    console.error(error);
+    process.exit(1);
+  }
 }
 
-fs.writeFileSync(FILE, 'package main\n\n');
-fs.appendFileSync(FILE, '// Icons catalog\nvar Icons = map[string]string{\n');
-
-const vars = Object.keys(mdi).reduce((accum, key) => {
-  const { icon, path } = getInfo(key);
-
-  return `${accum}    "${icon}": "${path}",\n`;
-}, '');
-
-fs.appendFileSync(FILE, `${vars}\n}`);
+main();
