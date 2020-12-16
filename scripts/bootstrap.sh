@@ -2,6 +2,9 @@
 
 WORKDIR=$PWD
 
+cd $WORKDIR/api
+npm i
+
 cd $WORKDIR/icons
 npm i
 

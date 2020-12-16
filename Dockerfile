@@ -28,8 +28,10 @@ RUN rm -rf node_modules
 
 # main container
 FROM scratch
-COPY --from=buildserver /app/bin/server /app/bin/server
-COPY --from=buildapidocs /app/api /app/api
-COPY --from=buildwebapp /app/web/dist/visomi/browser /app/web/dist/visomi/browser
+WORKDIR /app
+RUN mkdir bin
+COPY --from=buildserver /app/bin/server ./bin/server
+COPY --from=buildapidocs /app/api ./api
+COPY --from=buildwebapp /app/web/dist/visomi/browser ./web/dist/visomi/browser
 WORKDIR /app/bin
 ENTRYPOINT ["./server"]
