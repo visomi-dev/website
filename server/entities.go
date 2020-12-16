@@ -1,5 +1,11 @@
 package main
 
+// Icon model on database
+type IconModel struct {
+	Icon string `json:"icon,omitempty"`
+	Path string `json:"path,omitempty"`
+}
+
 // BaseResponse general response for all endpoints
 type BaseResponse struct {
 	Success bool   `json:"success"`
@@ -15,4 +21,9 @@ type BackgroundQueryParams struct {
 	MinItemSize int      `query:"minItemSize"`
 	MaxItemSize int      `query:"maxItemSize"`
 	Colors      []string `query:"color"`
+}
+
+// IconQueryParams data for work in icon usecase
+type IconQueryParams struct {
+	Color string `query:"color"`
 }

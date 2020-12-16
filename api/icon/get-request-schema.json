@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get background svg",
+  "description": "Get SVG image with stars (query params)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "color": {
+      "description": "The `color` parameter set the color of the path",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 10,
+      "default": "black"
+    }
+  }
+}

@@ -1,36 +1,48 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"math/rand"
 	"net/http"
+	"os"
 	"time"
 
 	svg "github.com/ajstarks/svgo"
 	"github.com/labstack/echo/v4"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // Icon generate svg icon
-func Icon(c echo.Context) error {
-	name := c.Param("name")
+func Icon(clnt *mongo.Client, ctx context.Context) echo.HandlerFunc {
+	col := clnt.Database(os.Getenv("MONGO_DB")).Collection("icons")
 
-	p := Icons[name]
+	return func(c echo.Context) error {
+		name := c.Param("name")
 
-	s := []byte(fmt.Sprintf(`
-		<svg
-			class="app-icon"
-			viewBox="0 0 24 24"
-		>
-			<path
-				id="icon"
-				fill="currentColor"
-				d="%s"
-			>
-			</path>
-		</svg>
-	`, p))
+		var ip IconQueryParams
+		var ic IconModel
 
-	return c.Blob(http.StatusOK, "image/svg+xml", s)
+		if err := c.Bind(&ip); err != nil {
+			return err
+		}
+
+		if err := col.FindOne(context.TODO(), bson.M{"icon": name}).Decode(&ic); err != nil {
+			return err
+		}
+
+		c.Response().Header().Set("Content-Type", "image/svg+xml")
+		c.Response().WriteHeader(http.StatusOK)
+
+		sv := svg.New(c.Response())
+
+		sv.Start(24, 24)
+		sv.Path(ic.Path, "id=\"icon\"", fmt.Sprintf("fill:%s;", ip.Color))
+		sv.End()
+
+		return nil
+	}
 }
 
 // Background generate svg

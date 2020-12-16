@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public get background(): string {
-    return `url(${environment.apiUrl}/api/background?${this.query.join('&')})`;
+    return `url(${environment.apiUrl}/background?${this.query.join('&')})`;
   }
 
   onResize(event: Event): void {

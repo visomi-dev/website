@@ -4,6 +4,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-icon',
@@ -28,6 +29,14 @@ export class IconComponent {
 
   get internalType(): string {
     return this.type ? `has-text-${this.type}` : '';
+  }
+
+  get url(): string {
+    return `${environment.apiUrl}/icon/${this.icon}?color=white#icon`
+  }
+
+  get isProduction() {
+    return environment.production;
   }
 
   public get internalClass(): string[] {

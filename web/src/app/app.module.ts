@@ -5,12 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { IconComponent } from './shared/icon/icon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IconComponent,
     NavbarComponent,
   ],
   imports: [

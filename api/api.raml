@@ -32,3 +32,24 @@ baseUri: https://visomi.dev/api
           image/svg+xml:
             example: !include background/get-response-200-example.svg
             type: !include background/get-response-200-schema.xsd
+
+/icon/{iconName}:
+  displayName: SVG icon from materialdesignicons
+  get:
+    description: Get the SVG File
+    queryParameters:
+      width:
+        type: number
+        description: The `width` parameter restricts the size of the canvas in horizontal
+      height:
+        type: number
+        description: The `height` parameter restricts the size of the canvas in vertical
+      color:
+        type: string
+        description: The `color` parameter set the color of the path
+    responses:
+      200:
+        body:
+          image/svg+xml:
+            example: !include icon/get-response-200-example.svg
+            type: !include icon/get-response-200-schema.xsd
