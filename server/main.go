@@ -27,7 +27,7 @@ func main() {
 		p = "8080"
 	}
 
-	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", p)))
 	defer dbc.Client.Disconnect(dbc.Context)
 	defer dbc.CancelContext()
+	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", p)))
 }

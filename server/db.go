@@ -4,7 +4,6 @@ import (
 	"context"
 	"log"
 	"os"
-	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -17,9 +16,7 @@ func db() DBC {
 		log.Fatal(err)
 	}
 
-	// Timeout
-	to := 10 * time.Second
-	ctx, cancel := context.WithTimeout(context.Background(), to)
+	ctx, cancel := context.WithCancel(context.Background())
 	err = client.Connect(ctx)
 
 	if err != nil {
