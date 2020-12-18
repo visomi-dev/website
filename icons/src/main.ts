@@ -28,7 +28,7 @@ async function main() {
 
     logger.debug(`${colors.green('✔️')}: Connected!`);
 
-    await IconModel.remove();
+    await IconModel.deleteMany();
 
     logger.debug(`${colors.blue('✦')}: Starting seed`);
 

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const URI = process.env.MONGO_DB_URL;
-const CONFIG = { useNewUrlParser: true, useUnifiedTopology: true };
+const CONFIG = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true };
 
 const createDBConnection = (): Promise<mongoose.Connection> => (
   new Promise((resolve, reject) => {
