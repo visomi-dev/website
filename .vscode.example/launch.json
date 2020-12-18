@@ -8,9 +8,7 @@
       "mode": "auto",
       "program": "${workspaceFolder}/server",
       "env": {
-        "PORT": 8400,
-        "MONGO_DB_URL": "mongodb+srv://develop:ZMPieiyoEguWwlJG@develop.90ueu.gcp.mongodb.net/icons?retryWrites=true&w=majority",
-        "MONGO_DB": "icons"
+        "PORT": 8400
       },
       "args": []
     },
