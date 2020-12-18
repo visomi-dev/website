@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
-	"os"
 	"time"
 
 	svg "github.com/ajstarks/svgo"
@@ -14,7 +13,7 @@ import (
 
 // Icon generate svg icon
 func Icon(dbc *DBC) echo.HandlerFunc {
-	col := dbc.Client.Database(os.Getenv("MONGO_DB")).Collection("icons")
+	col := dbc.Client.Database("visomi").Collection("icons")
 
 	return func(c echo.Context) error {
 		name := c.Param("name")

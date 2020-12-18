@@ -9,8 +9,7 @@
       "program": "${workspaceFolder}/server",
       "env": {
         "PORT": 8400,
-        "MONGO_DB_URL": "",
-        "MONGO_DB": ""
+        "MONGO_DB_URL": ""
       },
       "args": []
     },
