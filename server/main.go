@@ -11,9 +11,9 @@ import (
 func main() {
 	e := echo.New()
 	// MongoDB client
-	clnt, ctx := db()
+	dbc := db()
 
-	router(e, clnt, ctx)
+	router(e, &dbc)
 
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Format: "${method} ${uri} -> ${status}, time: ${latency_human}\n",
@@ -28,5 +28,6 @@ func main() {
 	}
 
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", p)))
-	defer clnt.Disconnect(ctx)
+	defer dbc.Client.Disconnect(dbc.Context)
+	defer dbc.CancelContext()
 }

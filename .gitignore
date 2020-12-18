@@ -5,3 +5,4 @@ vendor/
 __debug_bin
 api/api.html
 bin/server
+.vscode

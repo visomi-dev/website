@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"math/rand"
 	"net/http"
@@ -11,12 +10,11 @@ import (
 	svg "github.com/ajstarks/svgo"
 	"github.com/labstack/echo/v4"
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
 // Icon generate svg icon
-func Icon(clnt *mongo.Client, ctx context.Context) echo.HandlerFunc {
-	col := clnt.Database(os.Getenv("MONGO_DB")).Collection("icons")
+func Icon(dbc *DBC) echo.HandlerFunc {
+	col := dbc.Client.Database(os.Getenv("MONGO_DB")).Collection("icons")
 
 	return func(c echo.Context) error {
 		name := c.Param("name")
@@ -28,7 +26,7 @@ func Icon(clnt *mongo.Client, ctx context.Context) echo.HandlerFunc {
 			return err
 		}
 
-		if err := col.FindOne(context.TODO(), bson.M{"icon": name}).Decode(&ic); err != nil {
+		if err := col.FindOne(dbc.Context, bson.M{"icon": name}).Decode(&ic); err != nil {
 			return err
 		}
 

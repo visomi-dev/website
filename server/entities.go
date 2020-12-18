@@ -1,6 +1,12 @@
 package main
 
-// Icon model on database
+import (
+	"context"
+
+	"go.mongodb.org/mongo-driver/mongo"
+)
+
+// IconModel model on database
 type IconModel struct {
 	Icon string `json:"icon,omitempty"`
 	Path string `json:"path,omitempty"`
@@ -26,4 +32,11 @@ type BackgroundQueryParams struct {
 // IconQueryParams data for work in icon usecase
 type IconQueryParams struct {
 	Color string `query:"color"`
+}
+
+// DBC database connection and context
+type DBC struct {
+	Client        *mongo.Client
+	Context       context.Context
+	CancelContext context.CancelFunc
 }
