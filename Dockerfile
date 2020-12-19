@@ -26,11 +26,15 @@ RUN npm i
 RUN npm run prerender
 RUN rm -rf node_modules
 
+FROM alpine:3 as certs
+RUN apk --no-cache add ca-certificates
+
 # main container
 FROM scratch
 WORKDIR /app
 COPY --from=buildserver /app/bin/server ./bin/server
 COPY --from=buildapidocs /app/api ./api
 COPY --from=buildwebapp /app/web/dist/visomi/browser ./web/dist/visomi/browser
+COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 WORKDIR /app/bin
 ENTRYPOINT ["./server"]

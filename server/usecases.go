@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
 	"net/http"
 	"time"
@@ -26,6 +27,7 @@ func Icon(dbc *DBC) echo.HandlerFunc {
 		}
 
 		if err := col.FindOne(dbc.Context, bson.M{"icon": name}).Decode(&ic); err != nil {
+			log.Fatal(err)
 			return err
 		}
 
