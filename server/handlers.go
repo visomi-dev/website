@@ -14,7 +14,6 @@ import (
 
 // Docs API Documentation
 func Docs(w http.ResponseWriter, r *http.Request) {
-	r.URL.Query()
 	http.ServeFile(w, r, "../api/api.html")
 }
 
