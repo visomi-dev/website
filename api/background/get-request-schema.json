@@ -62,5 +62,13 @@
         }
       ]
     }
-  }
+  },
+  "required": [
+    "width",
+    "height",
+    "minItems",
+    "maxItems",
+    "minItemSize",
+    "maxItemSize"
+  ]
 }
