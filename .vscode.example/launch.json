@@ -19,7 +19,7 @@
       "name": "client",
       "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}/web",
-      "runtimeArgs": ["--auto-open-devtools-for-tabs", "--disable-web-security"]
+      "runtimeArgs": ["--auto-open-devtools-for-tabs"]
     }
   ],
   "compounds": [
