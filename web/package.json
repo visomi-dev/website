@@ -1,0 +1,22 @@
+{
+  "name": "website",
+  "version": "0.0.1",
+  "description": "my personal website",
+  "main": "src/index.ts",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/visomi-dev/website.git"
+  },
+  "keywords": [
+    "webpack",
+    "typescript"
+  ],
+  "author": "Michael Villalba Sotelo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/visomi-dev/website/issues"
+  },
+  "homepage": "https://github.com/visomi-dev/website#readme"
+}
