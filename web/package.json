@@ -4,7 +4,8 @@
   "description": "my personal website",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "webpack serve"
+    "dev": "NODE_ENV=development webpack serve",
+    "build": "NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@types/node": "^14.14.16",
     "@types/webpack": "^4.41.25",
     "@types/webpack-dev-server": "^3.11.1",
+    "dotenv": "^8.2.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",

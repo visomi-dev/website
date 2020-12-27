@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "ESNext",
     "target": "es5",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "moduleResolution": "Node",
     "sourceMap": true
   },
   "include": ["src/*.ts"],
