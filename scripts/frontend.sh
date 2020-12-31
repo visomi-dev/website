@@ -2,4 +2,4 @@
 
 cd web
 
-npm start
+npm run serve
