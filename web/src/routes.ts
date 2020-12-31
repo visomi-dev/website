@@ -13,7 +13,7 @@ const routes = pages.map(page => new HtmlWebpackPlugin({
 
 routes.push(new HtmlWebpackPlugin({
   filename: 'index.html',
-  template: './public/index.html',
+  template: './pages/index.html',
 }));
 
 export default routes;
