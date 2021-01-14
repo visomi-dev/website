@@ -4,14 +4,61 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {
+  computed, defineComponent, onBeforeUnmount, ref, watchEffect,
+} from 'vue';
 
+import environment from './environment';
 import AppNavbar from './components/AppNavbar.vue';
+
+const MIN_SIZE = 1;
+const MAX_SIZE = 2;
+
+const MIN_ITEMS = 0.0001;
+const MAX_ITEMS = 0.00025;
+
+const DEFAULT_WIDTH = 1360;
+const DEFAULT_HEIGHT = 768;
 
 export default defineComponent({
   name: 'App',
   components: {
     AppNavbar,
+  },
+  setup() {
+    const backgroundWidth = ref(DEFAULT_WIDTH);
+    const backgroundHeight = ref(DEFAULT_HEIGHT);
+
+    const backgroundSize = computed(() => backgroundWidth.value * backgroundHeight.value);
+
+    const backgroundQueryParams = computed(() => ([
+      `width=${backgroundWidth.value}`,
+      `height=${backgroundHeight.value}`,
+      `minItemSize=${MIN_SIZE}`,
+      `maxItemSize=${MAX_SIZE}`,
+      `minItems=${Math.round(backgroundSize.value * MIN_ITEMS)}`,
+      `maxItems=${Math.round(backgroundSize.value * MAX_ITEMS)}`,
+      'colors=white',
+    ]));
+
+    const backgroundStyle = computed(() => (
+      `background: url(${environment.apiUrl}/background?${backgroundQueryParams.value.join('&')})`
+    ));
+
+    function onResize(event: Event): void {
+      backgroundWidth.value = (event.target as Window).innerWidth;
+      backgroundHeight.value = (event.target as Window).innerHeight;
+    }
+
+    window.addEventListener('resize', onResize);
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', onResize);
+    });
+
+    watchEffect(() => {
+      document.getElementById('app')?.setAttribute('style', backgroundStyle.value);
+    });
   },
 });
 </script>
@@ -23,6 +70,9 @@ export default defineComponent({
   --body-background: var(--color-midnight-express);
   --body-overflow-y: auto;
   --body-margin: 0;
+
+  --navbar-height: 5rem;
+  --navbar-z: 25;
 }
 
 html,

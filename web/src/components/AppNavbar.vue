@@ -4,7 +4,13 @@
     aria-label="main navigation"
     role="navigation"
   >
-
+    <a class="navbar-brand">
+      <img
+        src="../assets/icon.svg"
+        alt="visomi.dev software architect"
+        title="visomi.dev software architect"
+      >
+    </a>
   </nav>
 </template>
 
@@ -19,15 +25,27 @@ export default defineComponent({
 <style lang="scss" scoped>
 nav.navbar {
   position: relative;
-  min-height: var(--navbar-height, 3.25rem);
-  background: var(--navbar-background, none);
-  z-index: var(--navbar-z, 25);
+  min-height: var(--navbar-height);
+  background: var(--navbar-background);
+  z-index: var(--navbar-z);
+
+  .navbar-brand,
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .navbar-brand img {
+    height: 2.5rem;
+    width: auto;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   nav.navbar {
     padding: 0 2rem;
-    min-height: var(--navbar-height, 3.25rem);
+    min-height: var(--navbar-height);
   }
 
   .navbar,
