@@ -61,7 +61,10 @@ func Icon(dbc *DBC) func(http.ResponseWriter, *http.Request) {
 	col := dbc.Client.Database("visomi").Collection("icons")
 
 	return func(w http.ResponseWriter, r *http.Request) {
-		n := strings.Split(r.URL.Path, "/")
+		// ps = paths
+		ps := strings.Split(r.URL.Path, "/")
+		// in = icon
+		in := strings.Replace(ps[3], ".svg", "", 0)
 
 		var ip IconQueryParams
 		var ic IconModel
@@ -71,7 +74,7 @@ func Icon(dbc *DBC) func(http.ResponseWriter, *http.Request) {
 			io.WriteString(w, err.Error())
 		}
 
-		if err := col.FindOne(dbc.Context, bson.M{"icon": n[3]}).Decode(&ic); err != nil {
+		if err := col.FindOne(dbc.Context, bson.M{"icon": in}).Decode(&ic); err != nil {
 			w.WriteHeader(500)
 			io.WriteString(w, err.Error())
 		}
