@@ -6,7 +6,7 @@
   >
     <a class="navbar-brand">
       <img
-        src="../assets/icon.svg"
+        src="../assets/visomi-icon.svg"
         alt="visomi.dev software architect"
         title="visomi.dev software architect"
       >
