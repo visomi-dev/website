@@ -64,7 +64,7 @@ func Icon(dbc *DBC) func(http.ResponseWriter, *http.Request) {
 		// ps = paths
 		ps := strings.Split(r.URL.Path, "/")
 		// in = icon
-		in := strings.Replace(ps[3], ".svg", "", 0)
+		in := strings.Replace(ps[3], ".svg", "", 1)
 
 		var ip IconQueryParams
 		var ic IconModel

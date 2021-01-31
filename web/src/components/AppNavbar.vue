@@ -4,13 +4,39 @@
     aria-label="main navigation"
     role="navigation"
   >
-    <a class="navbar-brand">
+    <router-link class="brand" to="/">
       <img
         src="../assets/visomi-icon.svg"
         alt="visomi.dev software architect"
         title="visomi.dev software architect"
       >
-    </a>
+    </router-link>
+
+    <ul class="menu">
+      <li>
+        <router-link to="/">
+          home
+        </router-link>
+      </li>
+
+      <li>
+        <router-link to="/">
+          about
+        </router-link>
+      </li>
+
+      <li>
+        <router-link to="/">
+          portfolio
+        </router-link>
+      </li>
+
+      <li>
+        <router-link to="/">
+          contact
+        </router-link>
+      </li>
+    </ul>
   </nav>
 </template>
 
@@ -24,36 +50,46 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 nav.navbar {
-  position: relative;
-  min-height: var(--navbar-height);
-  background: var(--navbar-background);
-  z-index: var(--navbar-z);
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 25;
 
-  .navbar-brand,
-  .navbar-menu {
+  .brand {
     display: flex;
     align-items: center;
-    flex-shrink: 0;
+    padding: 1.5rem;
   }
 
-  .navbar-brand img {
+  .brand img {
     height: 2.5rem;
     width: auto;
   }
-}
 
-@media screen and (min-width: 1024px) {
-  nav.navbar {
-    padding: 0 2rem;
-    min-height: var(--navbar-height);
-  }
-
-  .navbar,
-  .navbar-end,
-  .navbar-menu,
-  .navbar-start {
-    align-items: stretch;
+  .menu {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    li {
+      flex: 1;
+      position: relative;
+      text-align: center;
+      padding: 1.5rem 0;
+
+      a {
+        text-decoration: none;
+      }
+    }
   }
 }
 </style>

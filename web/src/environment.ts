@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 
 const MODE: string = process.env.NODE_ENV;
-const API_URL: string = process.env.VUE_APP_API_URL || 'http://localhost:4040/api';
+const SERVER_URL: string = process.env.VUE_APP_SERVER_URL || 'http://localhost:4040/';
 
 const BACKGROUND_STARS_MIN_SIZE = process.env.VUE_APP_BACKGROUND_STARS_MIN_SIZE;
 const BACKGROUND_STARS_MAX_SIZE = process.env.VUE_APP_BACKGROUND_STARS_MAX_SIZE;
@@ -12,7 +12,7 @@ const BACKGROUND_HEIGHT = process.env.VUE_APP_BACKGROUND_HEIGHT;
 
 const environment = {
   mode: MODE,
-  apiUrl: API_URL,
+  serverUrl: SERVER_URL,
   background: {
     stars: {
       minSize: BACKGROUND_STARS_MIN_SIZE ? parseInt(BACKGROUND_STARS_MIN_SIZE, 10) : 1,

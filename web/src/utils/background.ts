@@ -27,7 +27,7 @@ const backgroundQueryParams = computed(() => ([
 ].join('&')));
 
 export const backgroundStyle = computed(() => (
-  `background: url(${environment.apiUrl}/background.svg?${backgroundQueryParams.value})`
+  `background: url(${environment.serverUrl}/background.svg?${backgroundQueryParams.value})`
 ));
 
 export function onResize(event: Event): void {

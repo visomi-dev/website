@@ -35,13 +35,6 @@ export default defineComponent({
 <style lang="scss">
 :root {
   --color-midnight-express: #010018;
-
-  --body-background: var(--color-midnight-express);
-  --body-overflow-y: auto;
-  --body-margin: 0;
-
-  --navbar-height: 5rem;
-  --navbar-z: 25;
 }
 
 html,
@@ -50,13 +43,19 @@ body {
   height: 100%;
   margin: 0;
 
-  background: var(--body-background);
-  overflow-y: var(--body-overflow-y);
-  margin: var(--body-margin);
+  background: var(--color-midnight-express);
+  overflow-y: auto;
+  margin: 0;
 }
 
 #app {
   width: 100vw;
   height: 100vh;
+
+  main {
+    height: calc(100% - 5.5rem);
+    width: 100%;
+    padding-top: 5.5rem;
+  }
 }
 </style>
