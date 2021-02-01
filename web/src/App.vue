@@ -4,14 +4,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {
+  defineComponent,
+  onBeforeUnmount,
+  watchEffect,
+} from 'vue';
 
 import AppNavbar from './components/AppNavbar.vue';
+import { onResize, backgroundStyle } from './utils/background';
 
 export default defineComponent({
   name: 'App',
   components: {
     AppNavbar,
+  },
+  setup() {
+    window.addEventListener('resize', onResize);
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', onResize);
+    });
+
+    watchEffect(() => {
+      document.getElementById('app')?.setAttribute('style', backgroundStyle.value);
+    });
   },
 });
 </script>
@@ -19,10 +35,6 @@ export default defineComponent({
 <style lang="scss">
 :root {
   --color-midnight-express: #010018;
-
-  --body-background: var(--color-midnight-express);
-  --body-overflow-y: auto;
-  --body-margin: 0;
 }
 
 html,
@@ -31,13 +43,19 @@ body {
   height: 100%;
   margin: 0;
 
-  background: var(--body-background);
-  overflow-y: var(--body-overflow-y);
-  margin: var(--body-margin);
+  background: var(--color-midnight-express);
+  overflow-y: auto;
+  margin: 0;
 }
 
 #app {
   width: 100vw;
   height: 100vh;
+
+  main {
+    height: calc(100% - 5.5rem);
+    width: 100%;
+    padding-top: 5.5rem;
+  }
 }
 </style>
