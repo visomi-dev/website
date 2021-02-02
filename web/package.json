@@ -4,8 +4,9 @@
   "description": "my personal website",
   "main": "src/index.ts",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "dev": "vite",
+    "build": "vuedx-typecheck . && vite build",
+    "serve": "vite preview",
     "lint": "vue-cli-service lint"
   },
   "repository": {
@@ -23,7 +24,6 @@
   },
   "homepage": "https://github.com/visomi-dev/website#readme",
   "dependencies": {
-    "core-js": "^3.8.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.2"
   },
@@ -44,6 +44,12 @@
     "husky": "^4.3.6",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
-    "typescript": "^4.1.3"
+    "@vitejs/plugin-vue": "^1.1.2",
+    "@vuedx/typecheck": "^0.6.0",
+    "@vuedx/typescript-plugin-vue": "^0.6.0",
+    "typescript": "^4.1.3",
+    "vite": "^2.0.0-beta.50",
+    "core-js": "^3.8.1",
+    "sass": "^1.32.5"
   }
 }

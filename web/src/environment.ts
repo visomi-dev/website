@@ -1,14 +1,12 @@
-/* eslint-disable prefer-destructuring */
+const MODE: string = import.meta.env.NODE_ENV as string;
+const SERVER_URL: string = import.meta.env.VITE_SERVER_URL as string || 'http://localhost:4040';
 
-const MODE: string = process.env.NODE_ENV;
-const SERVER_URL: string = process.env.VUE_APP_SERVER_URL || 'http://localhost:4040/';
-
-const BACKGROUND_STARS_MIN_SIZE = process.env.VUE_APP_BACKGROUND_STARS_MIN_SIZE;
-const BACKGROUND_STARS_MAX_SIZE = process.env.VUE_APP_BACKGROUND_STARS_MAX_SIZE;
-const BACKGROUND_STARS_MIN_ITEMS = process.env.VUE_APP_BACKGROUND_STARS_MIN_ITEMS;
-const BACKGROUND_STARS_MAX_ITEMS = process.env.VUE_APP_BACKGROUND_STARS_MAX_ITEMS;
-const BACKGROUND_WIDTH = process.env.VUE_APP_BACKGROUND_WIDTH;
-const BACKGROUND_HEIGHT = process.env.VUE_APP_BACKGROUND_HEIGHT;
+const BACKGROUND_STARS_MIN_SIZE = import.meta.env.VITE_BACKGROUND_STARS_MIN_SIZE as string;
+const BACKGROUND_STARS_MAX_SIZE = import.meta.env.VITE_BACKGROUND_STARS_MAX_SIZE as string;
+const BACKGROUND_STARS_MIN_ITEMS = import.meta.env.VITE_BACKGROUND_STARS_MIN_ITEMS as string;
+const BACKGROUND_STARS_MAX_ITEMS = import.meta.env.VITE_BACKGROUND_STARS_MAX_ITEMS as string;
+const BACKGROUND_WIDTH = import.meta.env.VITE_BACKGROUND_WIDTH as string;
+const BACKGROUND_HEIGHT = import.meta.env.VITE_BACKGROUND_HEIGHT as string;
 
 const environment = {
   mode: MODE,

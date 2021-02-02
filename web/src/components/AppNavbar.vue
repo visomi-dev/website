@@ -15,7 +15,7 @@
     <ul class="menu">
       <li>
         <router-link to="/">
-          home
+          <app-icon icon="home" />
         </router-link>
       </li>
 
@@ -43,8 +43,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
+import AppIcon from './AppIcon.vue';
+
 export default defineComponent({
-  name: 'HomePage',
+  name: 'Navbar',
+  components: {
+    AppIcon,
+  },
 });
 </script>
 
