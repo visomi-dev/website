@@ -4,9 +4,9 @@
     {
       "type": "go",
       "request": "launch",
-      "name": "server",
+      "name": "backend",
       "mode": "auto",
-      "program": "${workspaceFolder}/server",
+      "program": "${workspaceFolder}/backend",
       "env": {
         "PORT": 4040,
         "MONGO_DB_URL": "mongodb+srv://develop:ZMPieiyoEguWwlJG@develop.90ueu.gcp.mongodb.net/icons?retryWrites=true&w=majority"
@@ -16,7 +16,7 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "client",
+      "name": "frontend",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}/web",
       "runtimeArgs": ["--auto-open-devtools-for-tabs", "--disable-web-security"]
@@ -25,7 +25,7 @@
   "compounds": [
     {
       "name": "FullStack",
-      "configurations": ["server", "client"]
+      "configurations": ["backend", "frontend"]
     }
   ]
 }
