@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd web
+cd frontend
 
 npm run dev

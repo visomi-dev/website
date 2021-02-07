@@ -2,6 +2,6 @@
 
 export $(grep -v '^#' ./server/.env | xargs)
 
-cd ./server
+cd ./backend
 
 gow run *.go
