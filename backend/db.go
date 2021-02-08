@@ -10,7 +10,11 @@ import (
 )
 
 func db() DBC {
-	client, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("MONGO_DB_URL")))
+	// database string connection
+	ds := os.Getenv("MONGO_DB_URL")
+	// client options
+	co := options.Client().ApplyURI(ds)
+	client, err := mongo.NewClient(co)
 
 	if err != nil {
 		log.Fatal(err)

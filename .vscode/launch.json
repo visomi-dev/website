@@ -7,16 +7,25 @@
       "name": "backend",
       "mode": "auto",
       "program": "${workspaceFolder}/backend",
-      "env": {
-        "PORT": 4040,
-        "MONGO_DB_URL": "mongodb+srv://develop:ZMPieiyoEguWwlJG@develop.90ueu.gcp.mongodb.net/icons?retryWrites=true&w=majority"
-      },
+      "envFile": "${workspaceFolder}/backend/.env",
       "args": []
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "frontend: server",
+      "cwd": "${workspaceFolder}/frontend",
+      "program": "${workspaceFolder}/frontend/src/server.ts",
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "env": {
+        "PORT": "8080"
+      },
+      "outputCapture": "std"
     },
     {
       "type": "chrome",
       "request": "launch",
-      "name": "frontend",
+      "name": "frontend: client",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}/web",
       "runtimeArgs": ["--auto-open-devtools-for-tabs", "--disable-web-security"]
@@ -25,7 +34,7 @@
   "compounds": [
     {
       "name": "FullStack",
-      "configurations": ["backend", "frontend"]
+      "configurations": ["backend", "frontend: server", "frontend: client"]
     }
   ]
 }

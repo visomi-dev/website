@@ -21,19 +21,19 @@
 
       <li>
         <router-link to="/">
-          about
+          <app-icon icon="text" />
         </router-link>
       </li>
 
       <li>
         <router-link to="/">
-          portfolio
+          <app-icon icon="briefcase" />
         </router-link>
       </li>
 
       <li>
         <router-link to="/">
-          contact
+          <app-icon icon="card-account-details" />
         </router-link>
       </li>
     </ul>
@@ -86,12 +86,16 @@ nav.navbar {
     list-style: none;
 
     li {
-      flex: 1;
+      display: flex;
       position: relative;
+
+      flex: 1;
       text-align: center;
-      padding: 1.5rem 0;
 
       a {
+        flex: 1;
+        padding: 2rem;
+
         text-decoration: none;
       }
     }

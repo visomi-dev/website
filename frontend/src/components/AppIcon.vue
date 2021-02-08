@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 
-import environment from '../environment';
+import environment from '../environment.ts';
 
 export default defineComponent({
   name: 'Icon',

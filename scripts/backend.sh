@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export $(grep -v '^#' ./server/.env | xargs)
+export $(grep -v '^#' ./backend/.env | xargs)
 
 cd ./backend
 

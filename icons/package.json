@@ -12,7 +12,7 @@
   "author": "Michael Villalba Sotelo",
   "license": "MIT",
   "dependencies": {
-    "@mdi/js": "^5.6.55",
+    "@mdi/js": "^5.9.55",
     "colors": "^1.4.0",
     "lodash": "^4.17.20",
     "mongoose": "^5.11.8",
