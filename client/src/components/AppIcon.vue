@@ -1,3 +1,24 @@
+<script name="Icon" lang="ts" setup>
+import { defineProps, computed } from 'vue';
+
+import environment from '../environment';
+
+const props = defineProps({
+  icon: {
+    type: String,
+    default: '',
+  },
+  color: {
+    type: String,
+    default: 'white',
+  },
+});
+
+const url = computed(() => (
+  `${environment.serverUrl}/icons/${props.icon}.svg?color=${props.color}#icon`
+));
+</script>
+
 <template>
   <svg
     class="icon"
@@ -6,35 +27,6 @@
     <use :href="url" />
   </svg>
 </template>
-
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
-
-import environment from '../environment';
-
-export default defineComponent({
-  name: 'Icon',
-  props: {
-    icon: {
-      type: String,
-      default: '',
-    },
-    color: {
-      type: String,
-      default: 'white',
-    },
-  },
-  setup(props) {
-    const url = computed(() => (
-      `${environment.serverUrl}/icons/${props.icon}.svg?color=${props.color}#icon`
-    ));
-
-    return {
-      url,
-    };
-  },
-});
-</script>
 
 <style lang="scss" scoped>
 </style>

@@ -1,10 +1,10 @@
-<script setup lang="ts">
+<script name="App" lang="ts" setup>
 import { onBeforeUnmount, watchEffect } from 'vue';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import AppNavbar from './components/AppNavbar.vue';
 import { onResize, backgroundStyle } from './utils/background';
 
+// @ts-ignore
 if (!import.meta.env.SSR) {
   window.addEventListener('resize', onResize);
 

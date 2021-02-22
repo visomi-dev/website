@@ -1,8 +1,8 @@
-<script name="Home" lang="ts" setup>
+<script name="Portfolio" lang="ts" setup>
 </script>
 
 <template>
-  <main class="home" />
+  <main class="portfolio" />
 </template>
 
 <style lang="scss" scoped>

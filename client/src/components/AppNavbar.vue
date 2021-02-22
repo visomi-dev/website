@@ -1,3 +1,7 @@
+<script name="Navbar" setup lang="ts">
+import AppIcon from './AppIcon.vue';
+</script>
+
 <template>
   <nav
     class="navbar"
@@ -23,38 +27,25 @@
       </li>
 
       <li>
-        <router-link to="/">
+        <router-link to="/about">
           <app-icon icon="text" />
         </router-link>
       </li>
 
       <li>
-        <router-link to="/">
+        <router-link to="/portfolio">
           <app-icon icon="briefcase" />
         </router-link>
       </li>
 
       <li>
-        <router-link to="/">
+        <router-link to="/contact">
           <app-icon icon="card-account-details" />
         </router-link>
       </li>
     </ul>
   </nav>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-import AppIcon from './AppIcon.vue';
-
-export default defineComponent({
-  name: 'Navbar',
-  components: {
-    AppIcon,
-  },
-});
-</script>
 
 <style lang="scss" scoped>
 nav.navbar {

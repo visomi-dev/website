@@ -8,5 +8,8 @@
     "project": "./tsconfig.json",
     "extraFileExtensions": [".vue"]
   },
-  "plugins": ["@typescript-eslint"]
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off"
+  }
 }
