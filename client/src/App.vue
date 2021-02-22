@@ -44,9 +44,20 @@ body {
   height: 100vh;
 
   main {
-    height: calc(100% - 5.5rem);
+    height: calc(100% - 6.5rem);
     width: 100%;
-    padding-top: 5.5rem;
+    padding-top: 6.5rem;
   }
+}
+
+.is-sr-only {
+  border: none!important;
+  clip: rect(0,0,0,0)!important;
+  height: .01em!important;
+  overflow: hidden!important;
+  padding: 0!important;
+  position: absolute!important;
+  white-space: nowrap!important;
+  width: .01em!important;
 }
 </style>

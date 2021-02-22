@@ -1,5 +1,5 @@
 const MODE: string = import.meta.env.NODE_ENV as string;
-const SERVER_URL: string = import.meta.env.VITE_SERVER_URL as string || 'http://localhost:4040';
+const SERVER_URL: string = import.meta.env.VITE_SERVER_URL as string;
 
 const BACKGROUND_STARS_MIN_SIZE = import.meta.env.VITE_BACKGROUND_STARS_MIN_SIZE as string;
 const BACKGROUND_STARS_MAX_SIZE = import.meta.env.VITE_BACKGROUND_STARS_MAX_SIZE as string;

@@ -8,5 +8,5 @@ func Router(dbc *DBC) {
 	http.HandleFunc("/icons/", Validator("../api/icon/get-request-schema.json", "query", Icon(dbc)))
 	http.HandleFunc("/background.svg", Validator("../api/background/get-request-schema.json", "query", Background))
 
-	http.Handle("/", http.FileServer(http.Dir("../web/dist")))
+	http.Handle("/", http.FileServer(http.Dir("../client/dist/static")))
 }

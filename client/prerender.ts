@@ -23,7 +23,7 @@ async function build() {
   const template = fs.readFileSync(toAbsolute('dist/static/index.html'), 'utf-8');
 
   // @ts-ignore
-  const render = await import('./dist/server/render.js');
+  const { default: render } = await import('./dist/server/render.js');
 
   const files = await fg('**/*.{vue,md}', { cwd: path.resolve(process.cwd(), 'src/pages') });
 

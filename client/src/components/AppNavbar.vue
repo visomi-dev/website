@@ -22,25 +22,49 @@ import AppIcon from './AppIcon.vue';
     <ul class="menu">
       <li>
         <router-link to="/">
-          <app-icon icon="home" />
+          <img
+            class="icon"
+            src="../assets/earth.svg"
+            alt="to home page"
+          >
+
+          HOME
         </router-link>
       </li>
 
       <li>
         <router-link to="/about">
-          <app-icon icon="text" />
+          <img
+            class="icon"
+            src="../assets/rocket.svg"
+            alt="to about page"
+          >
+
+          ABOUT
         </router-link>
       </li>
 
       <li>
         <router-link to="/portfolio">
-          <app-icon icon="briefcase" />
+          <img
+            class="icon"
+            src="../assets/constellation.svg"
+            alt="to portfolio page"
+          >
+
+          PORTFOLIO
         </router-link>
       </li>
 
       <li>
         <router-link to="/contact">
-          <app-icon icon="card-account-details" />
+          <img
+            class="icon"
+            src="../assets/satellite.svg"
+            alt="to contact page"
+          >
+
+          CONTACT
         </router-link>
       </li>
     </ul>
@@ -78,19 +102,56 @@ nav.navbar {
     padding: 0;
 
     list-style: none;
+    background: var(--color-midnight-express);
 
     li {
       display: flex;
       position: relative;
+      flex-direction: column;
 
       flex: 1;
       text-align: center;
 
       a {
         flex: 1;
-        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        padding: 1rem .5rem;
+
+        color: white;
+        font-size: .75rem;
 
         text-decoration: none;
+
+        img.icon {
+          height: 3rem;
+          width: 3rem;
+
+          padding-bottom: .75rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  nav.navbar {
+    justify-content: space-between;
+
+    ul.menu {
+      position: relative;
+      width: inherit;
+      bottom: inherit;
+
+      width: auto;
+
+      li {
+        a {
+          padding: 1rem 1.5rem;
+        }
       }
     }
   }

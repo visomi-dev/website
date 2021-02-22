@@ -5,6 +5,12 @@
   "main": "server.ts",
   "scripts": {
     "dev": "node -r esbuild-register ./server/index.ts",
+    "build": "run-p build:client build:server",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr server/render.ts --outDir dist/server",
+    "generate": "vite build --ssrManifest --outDir dist/static && npm run build:server && node -r esbuild-register prerender",
+    "serve": "cross-env NODE_ENV=production node -r esbuild-register server",
+    "serve:static": "serve dist/static",
     "lint": "eslint . --ext .ts,.vue",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -43,6 +49,7 @@
     "express": "^4.17.1",
     "fast-glob": "^3.2.5",
     "sass": "^1.32.8",
+    "serve": "^11.3.2",
     "typescript": "^4.1.5",
     "vite": "^2.0.1"
   }

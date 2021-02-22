@@ -37,7 +37,7 @@ async function resolver(
       }
 
       if (!isProd && vite) {
-        template = fs.readFileSync(resolve('public/index.html'), 'utf-8');
+        template = fs.readFileSync(resolve('index.html'), 'utf-8');
         template = await vite.transformIndexHtml(url, template);
         render = (await vite.ssrLoadModule('/server/render.ts')).default;
       }

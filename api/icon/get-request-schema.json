@@ -9,7 +9,7 @@
       "description": "The `color` parameter set the color of the path",
       "type": "string",
       "minLength": 3,
-      "maxLength": 10,
+      "maxLength": 24,
       "default": "black"
     }
   }
