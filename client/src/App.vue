@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, watchEffect } from 'vue';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import AppNavbar from './components/AppNavbar.vue';
 import { onResize, backgroundStyle } from './utils/background';
 
@@ -18,8 +19,8 @@ if (!import.meta.env.SSR) {
 </script>
 
 <template>
-  <app-navbar/>
-  <router-view/>
+  <app-navbar />
+  <router-view />
 </template>
 
 <style lang="scss">

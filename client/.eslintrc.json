@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "airbnb-typescript/base",
+    "plugin:vue/vue3-recommended"
+  ],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".vue"]
+  },
+  "plugins": ["@typescript-eslint"]
+}

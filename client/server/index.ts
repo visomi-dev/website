@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
 
 import type { Express } from 'express';
@@ -7,14 +8,14 @@ import middlewares from './middlewares';
 import resolver from './resolver';
 import createViteServer from './createViteServer';
 
-const PORT = process.env.PORT ? parseInt(process.env.PORT) : 8080;
-const IS_TEST = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 8080;
+const IS_TEST = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 
 async function createServer(
   root = process.cwd(),
   isProd = process.env.NODE_ENV === 'production',
 ): Promise<{ app: Express, vite: ViteDevServer | null }> {
-  const app = express()
+  const app = express();
 
   const vite = await createViteServer({ root, isProd, isTest: IS_TEST });
   const { serveStatic, compression } = await middlewares({ root, isProd, isTest: IS_TEST });
@@ -28,7 +29,7 @@ async function createServer(
     app.use(compression);
   }
 
-  app.use('*', await resolver(vite, { root, isProd, isTest: IS_TEST }))
+  app.use('*', await resolver(vite, { root, isProd, isTest: IS_TEST }));
 
   return {
     app,
@@ -40,13 +41,14 @@ function runServer(app: Express): Promise<boolean> {
   return new Promise((resolve, reject) => {
     try {
       app.listen(PORT, () => {
-        console.log(`🚀  Server listening on http://localhost:${PORT}`)
+        // eslint-disable-next-line no-console
+        console.log(`🚀  Server listening on http://localhost:${PORT}`);
         resolve(true);
-      })
+      });
     } catch (error) {
       reject(error);
     }
-  })
+  });
 }
 
 async function main() {

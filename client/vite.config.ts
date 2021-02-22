@@ -1,5 +1,6 @@
-import { UserConfig } from 'vite'
-import VuePlugin from '@vitejs/plugin-vue'
+/* eslint-disable import/no-extraneous-dependencies */
+import { UserConfig } from 'vite';
+import VuePlugin from '@vitejs/plugin-vue';
 
 const config: UserConfig = {
   plugins: [
@@ -8,6 +9,6 @@ const config: UserConfig = {
   build: {
     minify: false,
   },
-}
+};
 
-export default config
+export default config;

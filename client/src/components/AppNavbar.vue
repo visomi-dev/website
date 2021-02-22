@@ -4,7 +4,10 @@
     aria-label="main navigation"
     role="navigation"
   >
-    <router-link class="brand" to="/">
+    <router-link
+      class="brand"
+      to="/"
+    >
       <img
         src="../assets/visomi-icon.svg"
         alt="visomi.dev software architect"

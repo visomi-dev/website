@@ -1,18 +1,24 @@
 <template>
-  <svg class="icon" viewBox="0 0 24 24">
-    <use :href="url"/>
+  <svg
+    class="icon"
+    viewBox="0 0 24 24"
+  >
+    <use :href="url" />
   </svg>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 
-import environment from '../environment.ts';
+import environment from '../environment';
 
 export default defineComponent({
   name: 'Icon',
   props: {
-    icon: String,
+    icon: {
+      type: String,
+      default: '',
+    },
     color: {
       type: String,
       default: 'white',

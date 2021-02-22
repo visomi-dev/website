@@ -9,13 +9,13 @@ async function createViteServer(
   let vite: ViteDevServer | null = null;
 
   if (!isProd) {
-    vite = await import('vite').then(i => i.createServer({
+    vite = await import('vite').then((i) => i.createServer({
       root,
       logLevel: isTest ? 'error' : 'info',
       server: {
         middlewareMode: true,
       },
-    }))
+    }));
   }
 
   return vite;

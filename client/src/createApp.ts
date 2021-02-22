@@ -1,6 +1,6 @@
-import { createSSRApp } from 'vue'
+import { createSSRApp } from 'vue';
 
-import { createRouter } from './router';
+import createRouter from './createRouter';
 import App from './App.vue';
 
 function createApp() {

@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 
 import type { RequestHandler } from 'express';
-import { ViteDevServer } from 'vite';
+import type { ViteDevServer } from 'vite';
 
 import type { DefaultOptions } from '../entities/options';
 
@@ -14,20 +14,17 @@ async function resolver(
 
   const resolve = (p: string) => path.resolve(root, p);
 
-  let index: string;
-  let manifest: { [key: string]: unknown };
-
-  index = isProd
+  const index = isProd
     ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
-    : ''
+    : '';
 
-  manifest = isProd
+  const manifest = isProd
     ? await import('../dist/client/ssr-manifest.json')
-    : {}
+    : {};
 
   return async (req, res) => {
     try {
-      const url = req.originalUrl
+      const url = req.originalUrl;
 
       let template: string = '';
       let render;
@@ -36,27 +33,27 @@ async function resolver(
         template = index;
 
         // @ts-ignore
-        render = await import('../dist/server/render.js').then(i => i.default)
+        render = await import('../dist/server/render.js').then((i) => i.default);
       }
 
       if (!isProd && vite) {
-        template = fs.readFileSync(resolve('public/index.html'), 'utf-8')
-        template = await vite.transformIndexHtml(url, template)
-        render = (await vite.ssrLoadModule('/server/render.ts')).default
+        template = fs.readFileSync(resolve('public/index.html'), 'utf-8');
+        template = await vite.transformIndexHtml(url, template);
+        render = (await vite.ssrLoadModule('/server/render.ts')).default;
       }
 
-      const [appHtml, preloadLinks] = await render(url, manifest)
+      const [appHtml, preloadLinks] = await render(url, manifest);
 
       const html = template
         .replace('<!--preload-links-->', preloadLinks)
-        .replace('<!--app-html-->', appHtml)
+        .replace('<!--app-html-->', appHtml);
 
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
-    }
-    catch (e) {
+      res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+    } catch (e) {
       if (vite) { vite.ssrFixStacktrace(e); }
-      console.error(e.stack)
-      res.status(500).end(e.stack)
+      // eslint-disable-next-line no-console
+      console.error(e.stack);
+      res.status(500).end(e.stack);
     }
   };
 }

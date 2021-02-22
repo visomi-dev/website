@@ -1,6 +1,6 @@
 import path from 'path';
 
-import type { RequestHandler} from 'express';
+import type { RequestHandler } from 'express';
 
 import type { DefaultOptions } from '../entities/options';
 
@@ -20,11 +20,11 @@ async function middlewares(
   let serveStatic: RequestHandler | null = null;
 
   if (isProd) {
-    compression = await import('compression').then(i => i.default());
-    serveStatic = await import('serve-static').then(i => i.default(
+    compression = await import('compression').then((i) => i.default());
+    serveStatic = await import('serve-static').then((i) => i.default(
       resolve('dist/client'),
       { index: false },
-    ))
+    ));
   }
 
   return {

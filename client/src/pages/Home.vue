@@ -1,6 +1,5 @@
 <template>
-  <main class="home">
-  </main>
+  <main class="home" />
 </template>
 
 <script lang="ts">
