@@ -6,7 +6,7 @@
   },
   "eslint.workingDirectories": [
     { "directory": "icons", "changeProcessCWD": true },
-    { "directory": "web", "changeProcessCWD": true }
+    { "directory": "client", "changeProcessCWD": true }
   ],
   "cSpell.words": [
     "ajstarks",
