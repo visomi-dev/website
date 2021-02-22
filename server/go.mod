@@ -1,4 +1,4 @@
-module github.com/visomi-dev/website/backend
+module github.com/visomi-dev/website/server
 
 go 1.14
 

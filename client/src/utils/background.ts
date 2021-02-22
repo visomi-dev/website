@@ -11,8 +11,8 @@ const MAX_ITEM_SIZE = 2;
 const MIN_ITEMS = 0.0001;
 const MAX_ITEMS = 0.00025;
 
-const backgroundWidth = ref(window.innerWidth);
-const backgroundHeight = ref(window.innerHeight);
+const backgroundWidth = ref(import.meta.env.SSR ? 0 : window.innerWidth);
+const backgroundHeight = ref(import.meta.env.SSR ? 0 : window.innerHeight);
 
 const backgroundSize = computed(() => backgroundWidth.value * backgroundHeight.value);
 

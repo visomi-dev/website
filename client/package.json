@@ -1,0 +1,40 @@
+{
+  "name": "visomi.dev",
+  "version": "0.0.1",
+  "description": "visomi.dev website",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "node -r esbuild-register ./server/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/visomi-dev/website.git"
+  },
+  "keywords": [
+    "vite",
+    "vue"
+  ],
+  "author": "Michael Villalba Sotelo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/visomi-dev/website/issues"
+  },
+  "homepage": "https://github.com/visomi-dev/website#readme",
+  "dependencies": {
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.4"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.0",
+    "@types/express": "^4.17.11",
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/server-renderer": "^3.0.5",
+    "compression": "^1.7.4",
+    "esbuild-register": "^2.0.0",
+    "express": "^4.17.1",
+    "sass": "^1.32.8",
+    "vite": "^2.0.1"
+  }
+}

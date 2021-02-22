@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export $(grep -v '^#' ./backend/.env | xargs)
+export $(grep -v '^#' ./server/.env | xargs)
 
-cd ./backend
+cd ./server
 
 gow run *.go

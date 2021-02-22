@@ -4,19 +4,22 @@
     {
       "type": "go",
       "request": "launch",
-      "name": "backend",
+      "name": "server",
       "mode": "auto",
-      "program": "${workspaceFolder}/backend",
-      "envFile": "${workspaceFolder}/backend/.env",
+      "program": "${workspaceFolder}/server",
+      "env": {
+        "PORT": 4040
+      },
+      "envFile": "${workspaceFolder}/server/.env",
       "args": []
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "frontend: server",
-      "cwd": "${workspaceFolder}/frontend",
-      "program": "${workspaceFolder}/frontend/src/server.ts",
-      "runtimeArgs": ["-r", "ts-node/register"],
+      "name": "client: server",
+      "cwd": "${workspaceFolder}/client",
+      "program": "${workspaceFolder}/client/server/index.ts",
+      "runtimeArgs": ["-r", "esbuild-register"],
       "env": {
         "PORT": "8080"
       },
@@ -25,16 +28,16 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "frontend: client",
+      "name": "client",
       "url": "http://localhost:8080",
-      "webRoot": "${workspaceFolder}/web",
+      "webRoot": "${workspaceFolder}/client",
       "runtimeArgs": ["--auto-open-devtools-for-tabs", "--disable-web-security"]
     }
   ],
   "compounds": [
     {
       "name": "FullStack",
-      "configurations": ["backend", "frontend: server", "frontend: client"]
+      "configurations": ["server", "client: server", "client"]
     }
   ]
 }

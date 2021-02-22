@@ -1,4 +1,4 @@
-# For run backend server from comand line:
+# For run server server from comand line:
 
 ```bash
 go get -u github.com/mitranim/gow

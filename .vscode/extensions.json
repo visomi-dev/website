@@ -7,7 +7,6 @@
     "eamodio.gitlens",
     "streetsidesoftware.code-spell-checker",
     "blzjns.vscode-raml",
-    "ms-azuretools.vscode-docker",
-    "octref.vetur"
+    "ms-azuretools.vscode-docker"
   ]
 }

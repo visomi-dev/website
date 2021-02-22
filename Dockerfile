@@ -1,10 +1,10 @@
-FROM golang:1.14-alpine AS buildbackend
+FROM golang:1.14-alpine AS buildserver
 WORKDIR /app
-COPY backend ./backend
-WORKDIR /app/backend
+COPY server ./server
+WORKDIR /app/server
 RUN go mod download
 RUN mkdir bin
-RUN CGO_ENABLED=0 go build -o bin/backend backend/*.go
+RUN CGO_ENABLED=0 go build -o bin/server server/*.go
 
 FROM node:dubnium-alpine AS buildapidocs
 WORKDIR /app
@@ -14,10 +14,10 @@ RUN npm i
 RUN npm run generate
 RUN rm -rf node_modules
 
-FROM node:dubnium-alpine AS buildfrontendapp
+FROM node:dubnium-alpine AS buildclientapp
 WORKDIR /app
-COPY frontend ./frontend
-WORKDIR /app/frontend
+COPY client ./client
+WORKDIR /app/client
 RUN npm i
 RUN npm run prerender
 RUN rm -rf node_modules
@@ -26,9 +26,9 @@ FROM alpine:3 as certs
 RUN apk --no-cache add ca-certificates
 
 FROM scratch
-COPY --from=buildbackend /app/bin/backend ./app/bin/backend
+COPY --from=buildserver /app/bin/server ./app/bin/server
 COPY --from=buildapidocs /app/api ./app/api
-COPY --from=buildfrontendapp /app/frontend/dist/visomi/browser ./app/frontend/dist/visomi/browser
+COPY --from=buildclientapp /app/client/dist/visomi/browser ./app/client/dist/visomi/browser
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 WORKDIR /app/bin
-ENTRYPOINT ["./backend"]
+ENTRYPOINT ["./server"]
