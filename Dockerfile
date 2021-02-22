@@ -3,10 +3,9 @@ WORKDIR /app
 COPY server ./server
 WORKDIR /app/server
 RUN go mod download
-RUN mkdir bin
-RUN CGO_ENABLED=0 go build -o bin/server server/*.go
+RUN CGO_ENABLED=0 go build -o ../bin/server *.go
 
-FROM node:dubnium-alpine AS buildapidocs
+FROM node:alpine AS buildapidocs
 WORKDIR /app
 COPY api ./api
 WORKDIR /app/api
@@ -14,7 +13,7 @@ RUN npm i
 RUN npm run generate
 RUN rm -rf node_modules
 
-FROM node:dubnium-alpine AS buildclientapp
+FROM node:alpine AS buildclientapp
 WORKDIR /app
 COPY client ./client
 WORKDIR /app/client
